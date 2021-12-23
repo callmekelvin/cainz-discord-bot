@@ -1,7 +1,10 @@
 {
 	"name": "cainz_bot",
 	"version": "1.0.0",
-	"description": "",
+	"engines": {
+		"node": "16.x"
+	},
+	"description": "CAINZ Bot",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +12,7 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"dependencies": {
 		"@discordjs/builders": "^0.9.0",
 		"@discordjs/rest": "^0.1.0-canary.0",
