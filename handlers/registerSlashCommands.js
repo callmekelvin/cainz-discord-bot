@@ -1,7 +1,4 @@
 const fs = require("fs");
-const dotenv = require("dotenv");
-
-const config = dotenv.config();
 
 // Registers Slash Bot Commands with Discord (Details of Command Only)
 function registerSlashCommands(client) {

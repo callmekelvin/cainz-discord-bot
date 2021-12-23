@@ -6,11 +6,7 @@ const { loadSlashCommands } = require("./handlers/loadSlashCommands.js");
 const { loadEvents } = require("./handlers/loadEvents.js");
 const { loadCommands } = require("./handlers/loadCommands.js");
 
-const config = dotenv.config();
-
-if (config.error) {
-	throw config.error;
-}
+const config = dotenv.config({ silent: true });
 
 // Create new client instance
 const client = new Client({
