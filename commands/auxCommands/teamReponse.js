@@ -10,13 +10,14 @@ module.exports = {
 			await interaction.deferReply({ ephermeral: true });
 
 			const rawData = await axios.get(process.env.TEAM_ENDPOINT);
+			console.log(rawData);
 
-			if ((await rawData.status) != 200) {
+			if ((await rawData.status) != 200 || rawData.data.status != 200) {
 				await interaction.editReply({ content: "Error fetching team data" });
 				return;
 			}
 
-			const data = await rawData.data;
+			const data = await rawData.data.data;
 
 			const returnField = data[interaction.values[0]].map((member) => {
 				return {

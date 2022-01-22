@@ -11,12 +11,14 @@ module.exports = {
 		try {
 			await interaction.deferReply({ ephermeral: true });
 
-			const events = await axios.get(process.env.EVENT_ENDPOINT);
+			const rawEvents = await axios.get(process.env.EVENT_ENDPOINT);
 
-			if (events.status != 200) {
+			if (rawEvents.status != 200 || rawEvents.data.status != 200) {
 				await interaction.editReply({ content: "Error fetching digest data" });
 				return;
 			}
+
+			const events = await rawEvents.data;
 
 			upcomingEvents = [];
 

@@ -14,15 +14,16 @@ module.exports = {
 			await interaction.deferReply({ ephermeral: true });
 
 			const rawData = await axios.get(process.env.DIGEST_ENDPOINT);
+			console.log(rawData);
 
-			const digest = await rawData.data;
-
-			const digestArticle = await digest[0].data;
-
-			if ((await rawData.status) != 200 || digest.length == 0) {
+			if ((await rawData.status) != 200 || rawData.data.status != 200) {
 				await interaction.editReply({ content: "Error fetching digest data" });
 				return;
 			}
+
+			const digest = await rawData.data.data;
+
+			const digestArticle = await digest[0].data;
 
 			let writerString = "Writers:  ";
 
